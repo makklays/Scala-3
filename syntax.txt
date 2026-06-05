@@ -125,7 +125,7 @@ Utils.hello()
 
 Одна из фишек Scala 3.
 
-extention (s: String)
+extension (s: String)
   def shout: String = 
     s.toUpperCase
 
