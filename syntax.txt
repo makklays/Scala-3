@@ -1,0 +1,166 @@
+
+
+Синтаксис Scala 3 стал более чистым, лаконичным и современным по сравнению со Scala 2. 
+Главное изменение — переход к опциональным фигурным скобкам и использование отступов (значимых пробелов), как в Python.
+
+1. Переменные: изменяемые и неизменяемые
+
+В Scala принято разделять то, что можно менять, и то, что менять нельзя. Тип данных (число, строка) указывать необязательно — язык поймет его сам.
+
+val — константа. Значение нельзя изменить после создания. Использовать нужно её по умолчанию.
+var — обычная переменная. Её значение можно менять.
+
+val name = "Иван"  // Это константа. Перезаписать name = "Петр" нельзя.
+var age = 25       // Это переменная. Можно сделать age = 26.
+
+2. Структура кода (без фигурных скобок)
+
+В отличие от JavaScript, C++ или Java, в Scala 3 блоки кода выделяются отступами (пробелами), прямо как в Python.
+
+if age >= 18 then
+  println("Доступ разрешен")
+else
+  println("Доступ запрещен")
+
+3. Match (аналог switch)
+
+val day = 1
+val name = day match 
+  case 1 => "Monday"
+  case 2 => "Tuesday"
+  case _ => "Unknown"
+
+4. Функции (методы)
+
+Функции создаются с помощью ключевого слова def. Знак = указывает на то, что функция «равна» своему телу. Слово return писать не нужно: функция автоматически возвращает результат последней строчки.
+
+// Функция принимает два числа x и y, и возвращает их сумму
+def sum(x: Int, y: Int) = x + y
+// Вызов функции
+val result = sum(5, 10) // result будет равен 15
+
+5. Lambda (анонимная функция)
+
+val add = (a: Int, b: Int) => a + b
+// Использование:
+List(1, 2, 3).map(x => x * 2)
+// Краткая запись:
+List(1, 2, 3).map(_ * 2)
+
+6. Создание объектов и классов
+
+Для описания объектов используют классы. Конструктор (то, какие данные нужны для создания объекта) пишется прямо в круглых скобках после имени класса. Обратите внимание на двоеточие : — оно заменяет фигурные скобки.
+
+class Car(val brand: String, var speed: Int):
+  def drive() = println(s"Машина $brand едет со скоростью $speed км/ч")
+
+// Создаем машину (слово 'new' в Scala 3 писать не нужно)
+val myCar = Car("Toyota", 90)
+myCar.drive() // Выведет: Машина Toyota едет со скоростью 90 км/ч
+
+5. Коллекции
+
+val numbers = List(1, 2, 3)
+numbers.map(_ * 2)
+numbers.filter(_ > 1)
+numbers.foreach(println)
+
+6. Циклы 
+
+for n <- List(1, 2, 3) do 
+  println(n)
+
+// Сгенерацией новой коллекции 
+val doubled = 
+  for n <- List(1, 2, 3)
+  yield n * 2
+
+// Перебор элементов цикла (аналог foreach)
+for num <- numbers do
+  println(num)
+
+7. Case class 
+
+Очень часто используется для DTO и моделей данных.
+
+case class User(
+  id: Long,
+  name: String
+)
+
+// Создание:
+val user = User(1, "Alex")
+
+8. Enum 
+
+enum Status:
+  case Active
+  case Blocked 
+  case Deleted 
+
+// Использование:
+val status = Status.Active 
+
+9. Traits (аналог интерфейса)
+
+trait Animal:
+  def sound(): String 
+
+// Реализация 
+class Dog extends Animal:
+  def sound() = "Woof"
+
+10. Objects 
+
+Аналог стстических методов Java. 
+
+object Utils:
+  def hello() = 
+    println("Hello")
+
+// Вызов:
+Utils.hello()
+
+11. Extension Methods 
+
+Одна из фишек Scala 3.
+
+extention (s: String)
+  def shout: String = 
+    s.toUpperCase
+
+// Использование:
+"hello".shout 
+
+12. Given и Using (Dependency Injection / Type Classes)
+
+given String = "Hello"
+
+def greet(using message: String) = 
+  println(message)
+
+greet 
+
+Компилятор сам найдет given.
+
+13. Option вместо null 
+
+val name: Option[String] = Some("Alex")
+
+// Получение значения:
+name match
+  case Some(value) => println(value)
+  case None => println("Empty")
+// или
+name.getOrElse("Unknown")
+
+14. Основные коллекции 
+
+List(1, 2, 3)       // immutable список
+Vector(1, 2, 3)     // быстрый доступ по индексу 
+Set(1, 2, 3)        // множество
+Map("a" -> 1) 
+
+
+//
+
