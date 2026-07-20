@@ -12,10 +12,10 @@ for i <- 0 to 24 do
   println(s"Hour: $i")
 
 // loop while 
-val count = 1
+var count = 1
 while count < 24 do 
-  println(s"Hour: $i")
-  count=+1
+  println(s"Hour: $count")
+  count+=1
 
 // for comprehension
 val secondHours = 
