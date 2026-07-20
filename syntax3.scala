@@ -40,9 +40,9 @@ def qvadrat(a: Int, b: Int): Int =
 class User(val name: String, var age: Int)
 
 // case class 
-case class Emplyee(name: String, var age: Int, department: String)
+case class Employee(name: String, var age: Int, department: String)
 
-val empl = Employee("Alexander", "26", "IT department")
+val empl = Employee("Alexander", 26, "IT department")
 
 // pattern matching (switch-case) 
 val activity = empl.department match 
