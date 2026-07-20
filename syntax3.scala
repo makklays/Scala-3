@@ -55,3 +55,4 @@ class myClass extends myFirstTrait, mySecondTrait:
   def thirdFun(): Int = 3
 
 
+//
